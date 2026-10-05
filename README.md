@@ -8,6 +8,11 @@ A practical reference to show the operational and data-consistency trade-offs be
 
 When going from a monolithic system to microservices, you exchange in-memory function calls and ACID(Atomicity, Consistency, Isolation, and Durability) database transactions for asynchronous network calls and independent service databases.
 
+## To run demo.py
+
+python3 -m pip install fastapi uvicorn sqlalchemy pydantic
+python3 demo.py
+
 ```text
 [ MONOLITH ]
 User Request ---> [ Single ACID Transaction ] ---> ( Orders Table + Inventory Table + Audit Table )
