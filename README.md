@@ -25,7 +25,8 @@ User Request ---> [ Order Service ] --(DB Write)---> [ Order DB ]
                   [ Audit Service ] --(DB Write)---> [ Audit DB ]
 * Risk: Network timeout after Order DB write creates state corruption!
 
-```text FOR MERMAID.js
+```text
+* For Mermaid.js graphic rendering
 graph TD
     subgraph Monolith
         M_Req[User Request] --> M_Tx[Single ACID Transaction]
