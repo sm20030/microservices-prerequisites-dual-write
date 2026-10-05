@@ -24,3 +24,19 @@ User Request ---> [ Order Service ] --(DB Write)---> [ Order DB ]
                        v
                   [ Audit Service ] --(DB Write)---> [ Audit DB ]
 * Risk: Network timeout after Order DB write creates state corruption!
+
+```text FOR MERMAID.js
+graph TD
+    subgraph Monolith
+        M_Req[User Request] --> M_Tx[Single ACID Transaction]
+        M_Tx --> M_DB[(Orders, Inventory & Audit Tables)]
+    end
+
+    subgraph Microservices
+        MS_Req[User Request] --> MS_Ord[Order Service]
+        MS_Ord -->|DB Write| MS_ODB[(Order DB)]
+        MS_Ord -->|Network Hop / SQS| MS_Inv[Inventory Service]
+        MS_Inv -->|DB Write| MS_IDB[(Inventory DB)]
+        MS_Inv -->|Network Hop / SQS| MS_Audit[Audit Service]
+        MS_Audit -->|DB Write| MS_ADB[(Audit DB)]
+    end
