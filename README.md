@@ -14,6 +14,8 @@ python3 -m pip install fastapi uvicorn sqlalchemy pydantic
 
 python3 demo.py
 
+**Note** I've added timer pauses to show each step of the process as the data is updated, outbox record added in transaction, process picks up un-processed records, passes them to a queue and updates the process flag to true.
+
 ```text
 [ MONOLITH ]
 User Request ---> [ Single ACID Transaction ] ---> ( Orders Table + Inventory Table + Audit Table )
