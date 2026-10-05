@@ -19,4 +19,8 @@ User Request ---> [ Order Service ] --(DB Write)---> [ Order DB ]
                   (Network Hop / REST / SQS)
                        v
                   [ Inventory Service ] --(DB Write)---> [ Inventory DB ]
+                       |
+                  (Network Hop / REST / SQS)
+                       v
+                  [ Audit Service ] --(DB Write)---> [ Audit DB ]
 * Risk: Network timeout after Order DB write creates state corruption!
