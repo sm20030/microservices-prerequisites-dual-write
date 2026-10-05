@@ -11,6 +11,7 @@ When going from a monolithic system to microservices, you exchange in-memory fun
 ## To run demo.py
 
 python3 -m pip install fastapi uvicorn sqlalchemy pydantic
+
 python3 demo.py
 
 ```text
